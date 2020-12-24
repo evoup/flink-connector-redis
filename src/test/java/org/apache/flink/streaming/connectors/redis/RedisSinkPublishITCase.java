@@ -133,5 +133,10 @@ public class RedisSinkPublishITCase extends RedisITCaseBase {
         public String getValueFromData(Tuple2<String, String> data) {
             return data.f1;
         }
+
+        @Override
+        public int getExpireSeconds(Tuple2<String, String> data) {
+            return 0;
+        }
     }
 }

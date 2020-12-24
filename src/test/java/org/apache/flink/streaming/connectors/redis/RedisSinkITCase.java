@@ -214,6 +214,11 @@ public class RedisSinkITCase extends RedisITCaseBase {
         public String getValueFromData(Tuple2<String, String> data) {
             return data.f1;
         }
+
+        @Override
+        public int getExpireSeconds(Tuple2<String, String> data) {
+            return 0;
+        }
     }
 
     public static class RedisAdditionalDataMapper implements RedisMapper<Tuple2<String, String>> {
@@ -237,6 +242,11 @@ public class RedisSinkITCase extends RedisITCaseBase {
         @Override
         public String getValueFromData(Tuple2<String, String> data) {
             return data.f1;
+        }
+
+        @Override
+        public int getExpireSeconds(Tuple2<String, String> data) {
+            return 0;
         }
     }
 }

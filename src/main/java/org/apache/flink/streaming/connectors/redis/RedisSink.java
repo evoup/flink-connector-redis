@@ -128,7 +128,8 @@ public class RedisSink<IN> extends RichSinkFunction<IN> {
     public void invoke(IN input) throws Exception {
         String key = redisSinkMapper.getKeyFromData(input);
         String value = redisSinkMapper.getValueFromData(input);
-
+        // 取得过期时间
+        int expireSec = redisSinkMapper.getExpireSeconds(input);
         switch (redisCommand) {
             case RPUSH:
                 this.redisCommandsContainer.rpush(key, value);
@@ -141,6 +142,12 @@ public class RedisSink<IN> extends RichSinkFunction<IN> {
                 break;
             case SET:
                 this.redisCommandsContainer.set(key, value);
+                break;
+            // 新写的setex逻辑
+            case SETEX:
+                if (expireSec > 0) {
+                    this.redisCommandsContainer.setex(key, expireSec, value);
+                }
                 break;
             case PFADD:
                 this.redisCommandsContainer.pfadd(key, value);

@@ -63,4 +63,6 @@ public interface RedisMapper<T> extends Function, Serializable {
      * @return value
      */
     String getValueFromData(T data);
+
+    int getExpireSeconds(T data);
 }
