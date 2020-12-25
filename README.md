@@ -5,10 +5,11 @@ to [Redis PubSub](http://redis.io/topics/pubsub). To use this connector, add the
 following dependency to your project:
 
     <dependency>
-      <groupId>org.apache.bahir</groupId>
-      <artifactId>flink-connector-redis_2.11</artifactId>
-      <version>1.0-SNAPSHOT</version>
+        <groupId>com.evoupsight</groupId>
+        <artifactId>flink-connector-redis_2.11</artifactId>
+        <version>1.0</version>
     </dependency>
+
 
 *Version Compatibility*: This module is compatible with Redis 2.8.5.
 
